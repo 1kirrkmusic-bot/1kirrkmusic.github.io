@@ -16,34 +16,63 @@ body {
   background: black;
   color: white;
   text-align: center;
+  overflow-x: hidden;
 }
 
-/* 🌑 DARK BACKGROUND */
+/* ⏳ LOADING SCREEN */
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  font-size: 2em;
+  letter-spacing: 3px;
+}
+
+/* 🌑 BACKGROUND */
 .bg {
   position: fixed;
   width: 100%;
   height: 100%;
   background: url('cover.jpg') center/cover no-repeat;
   filter: blur(25px) brightness(0.2);
-  z-index: -1;
+  z-index: -3;
 }
 
-/* HEADER */
-header {
-  padding: 60px 20px 20px;
+/* 🌫️ FOG */
+.fog, .fog2 {
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: url('https://i.imgur.com/8IuucQZ.png') repeat;
+  opacity: 0.12;
+  z-index: -2;
 }
-h1 {
-  font-size: 3em;
-  letter-spacing: 3px;
+.fog { animation: moveFog 60s linear infinite; }
+.fog2 { animation: moveFog 90s linear infinite reverse; }
+
+@keyframes moveFog {
+  from { transform: translate(0,0); }
+  to { transform: translate(-50%, -50%); }
 }
 
-/* ✨ GLOW TEXT */
+/* FADE IN */
+.fade {
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* GLOW */
 .glow {
   color: #b89cff;
-  text-shadow: 
-    0 0 5px #6a00ff,
-    0 0 10px #6a00ff,
-    0 0 20px #6a00ff;
+  text-shadow: 0 0 5px #6a00ff, 0 0 15px #6a00ff;
 }
 
 /* COVER */
@@ -65,7 +94,6 @@ h1 {
   border-radius: 12px;
   text-decoration: none;
   color: white;
-  font-weight: bold;
   background: linear-gradient(45deg, #111, #6a00ff);
   transition: 0.3s;
 }
@@ -73,35 +101,23 @@ h1 {
   transform: scale(1.05);
 }
 
+/* TRACKLIST */
+.tracklist li {
+  list-style: none;
+  margin: 6px 0;
+  cursor: pointer;
+  text-shadow: 0 0 10px #6a00ff;
+}
+.tracklist li:hover {
+  color: #fff;
+  text-shadow: 0 0 20px #b89cff;
+}
+
 /* SPOTIFY */
 .spotify {
   margin: 30px auto;
   width: 90%;
   max-width: 400px;
-}
-
-/* TRACKLIST */
-.tracklist {
-  margin: 40px 0;
-}
-.tracklist h2 {
-  margin-bottom: 10px;
-}
-.tracklist li {
-  list-style: none;
-  margin: 6px 0;
-  color: #ccc;
-  text-shadow:
-    0 0 5px #6a00ff,
-    0 0 10px #6a00ff;
-}
-
-/* ABOUT */
-.about {
-  padding: 20px;
-  max-width: 500px;
-  margin: auto;
-  color: #aaa;
 }
 
 /* FOOTER */
@@ -114,55 +130,90 @@ footer {
 
 <body>
 
-<div class="bg"></div>
+<!-- ⏳ LOADER -->
+<div id="loader">HOOD BLUES</div>
 
-<header>
+<div class="bg"></div>
+<div class="fog"></div>
+<div class="fog2"></div>
+
+<header class="fade">
   <h1>1Kirrk</h1>
   <p class="glow">HOOD BLUES — OUT NOW</p>
 </header>
 
-<section class="cover">
-  <img src="cover.jpg" alt="Hood Blues Cover">
+<section class="cover fade">
+  <img src="cover.jpg">
 </section>
 
-<!-- 🎧 SPOTIFY EMBED -->
-<div class="spotify">
+<div class="spotify fade">
   <iframe style="border-radius:12px"
     src="https://open.spotify.com/embed/album/4PJfvvXo03JwCot9CG3yBu"
     width="100%" height="152"
-    frameBorder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    frameborder="0"
+    allow="autoplay; encrypted-media">
   </iframe>
 </div>
 
-<section class="buttons">
-  <a href="https://open.spotify.com/album/4PJfvvXo03JwCot9CG3yBu" target="_blank">🎧 Spotify</a>
-  <a href="https://music.apple.com/ke/album/hood-blues-ep/1895704865" target="_blank">🍎 Apple Music</a>
-  <a href="https://youtube.com/playlist?list=OLAK5uy_nfO2vh5BxzlZE997_VtRH3944a7TYDExk" target="_blank">▶ YouTube</a>
-  <a href="https://www.instagram.com/kirrk" target="_blank">📱 Instagram</a>
+<section class="buttons fade">
+  <a href="https://open.spotify.com/album/4PJfvvXo03JwCot9CG3yBu" target="_blank">Spotify</a>
+  <a href="https://music.apple.com/ke/album/hood-blues-ep/1895704865" target="_blank">Apple Music</a>
+  <a href="https://youtube.com/playlist?list=OLAK5uy_nfO2vh5BxzlZE997_VtRH3944a7TYDExk" target="_blank">YouTube</a>
+  <a href="https://www.instagram.com/kirrk" target="_blank">Instagram</a>
 </section>
 
-<section class="tracklist">
+<section class="tracklist fade">
   <h2 class="glow">TRACKLIST</h2>
   <ul>
-    <li>Lyrical Blues</li>
-    <li>Hocus Pocus</li>
-    <li>No Hook</li>
-    <li>Glide</li>
+    <li onclick="flash()">Lyrical Blues</li>
+    <li onclick="flash()">Hocus Pocus</li>
+    <li onclick="flash()">No Hook</li>
+    <li onclick="flash()">Glide</li>
   </ul>
 </section>
 
-<section class="about">
-  <h2 class="glow">About</h2>
-  <p>
-    1Kirrk is an emerging artist turning pressure into sound.
-    Hood Blues captures a raw vibe, struggle, and survival through music.
-  </p>
-</section>
-
-<footer>
+<footer class="fade">
   © 1Kirrk — HOOD BLUES
 </footer>
+
+<!-- 🔊 HOVER SOUND -->
+<audio id="hoverSound" src="hover.mp3" preload="auto"></audio>
+
+<!-- 🎵 AMBIENT SOUND (OPTIONAL) -->
+<audio id="bgSound" src="ambient.mp3" loop></audio>
+
+<script>
+/* LOADER */
+window.onload = () => {
+  setTimeout(() => {
+    document.getElementById("loader").style.display = "none";
+  }, 1500);
+};
+
+/* HOVER SOUND */
+const buttons = document.querySelectorAll(".buttons a");
+const sound = document.getElementById("hoverSound");
+
+buttons.forEach(btn => {
+  btn.addEventListener("mouseenter", () => {
+    sound.currentTime = 0;
+    sound.play();
+  });
+});
+
+/* TRACK CLICK EFFECT */
+function flash() {
+  document.body.style.background = "#111";
+  setTimeout(() => {
+    document.body.style.background = "black";
+  }, 100);
+}
+
+/* AMBIENT SOUND (starts after interaction) */
+document.body.addEventListener("click", () => {
+  document.getElementById("bgSound").play();
+}, { once: true });
+</script>
 
 </body>
 </html>
