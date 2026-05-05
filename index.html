@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Monetag verification -->
 <meta name="monetag" content="5e768b1be65802df291787894e323fbe">
+
+<!-- SEO -->
+<meta name="description" content="1Kirrk official page. Stream Hood Blues EP on Spotify, Apple Music and YouTube.">
 
 <title>1Kirrk — HOOD BLUES</title>
 
@@ -13,24 +18,16 @@ body {
   font-family: Arial, sans-serif;
   color: white;
   text-align: center;
-  overflow-x: hidden;
 }
 
 /* BACKGROUND */
 .bg {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background: url('cover.jpg') center/cover no-repeat;
   filter: blur(20px) brightness(0.3);
   z-index: -1;
-  animation: zoom 20s infinite alternate;
-}
-@keyframes zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
 }
 
 /* HEADER */
@@ -39,11 +36,9 @@ header {
 }
 h1 {
   font-size: 3em;
-  letter-spacing: 3px;
 }
 .tagline {
   color: #9d8bff;
-  font-weight: bold;
 }
 
 /* COVER */
@@ -52,36 +47,27 @@ h1 {
   max-width: 320px;
   border-radius: 12px;
   margin: 20px 0;
-  box-shadow: 0 0 30px #6a00ff;
 }
 
 /* BUTTONS */
 .buttons a {
   display: block;
-  margin: 12px auto;
+  margin: 10px auto;
   padding: 14px;
   width: 85%;
   max-width: 320px;
   border-radius: 12px;
   text-decoration: none;
   color: white;
-  font-weight: bold;
   background: linear-gradient(45deg, #1e90ff, #6a00ff);
-  transition: 0.3s;
-}
-.buttons a:hover {
-  transform: scale(1.08);
 }
 
-/* PREVIEW BUTTON */
-.preview-btn {
-  margin: 15px;
-  padding: 12px 20px;
-  background: #6a00ff;
-  border: none;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
+/* VIDEO */
+video {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  margin-top: 20px;
 }
 
 /* TRACKLIST */
@@ -91,25 +77,13 @@ h1 {
 .tracklist h2 {
   color: #9d8bff;
 }
-.tracklist li {
-  color: #bbb;
-}
 
-/* STICKY CTA */
-.sticky {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: rgba(0,0,0,0.9);
-  padding: 12px;
-}
-.sticky a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  background: #6a00ff;
-  padding: 10px 20px;
-  border-radius: 8px;
+/* ABOUT */
+.about {
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  color: #ccc;
 }
 
 /* FOOTER */
@@ -133,18 +107,17 @@ footer {
   <img src="cover.jpg" alt="Hood Blues Cover">
 </section>
 
-<!-- 🎧 AUDIO PREVIEW -->
-<button class="preview-btn" onclick="toggleAudio()">▶ Play Preview</button>
-
-<audio id="audio">
-  <source src="preview.mp3" type="audio/mpeg">
-</audio>
+<!-- 🎬 VIDEO PREVIEW (MP4) -->
+<video controls>
+  <source src="preview.mp4" type="video/mp4">
+  Your browser does not support video.
+</video>
 
 <section class="buttons">
   <a href="https://open.spotify.com/album/4PJfvvXo03JwCot9CG3yBu?si=-GFH-SLuRYexkA8YQWrfNQ" target="_blank">🎧 Spotify</a>
   <a href="https://music.apple.com/ke/album/hood-blues-ep/1895704865" target="_blank">🍎 Apple Music</a>
   <a href="https://youtube.com/playlist?list=OLAK5uy_nfO2vh5BxzlZE997_VtRH3944a7TYDExk" target="_blank">▶ YouTube</a>
-  <a href="https://www.instagram.com/kirrk?igsh=MWNoYTdha3J1dTEzdw%3D%3D&utm_source=qr" target="_blank">📱 Instagram</a>
+  <a href="https://www.instagram.com/kirrk" target="_blank">📱 Instagram</a>
 </section>
 
 <section class="tracklist">
@@ -157,27 +130,18 @@ footer {
   </ul>
 </section>
 
+<!-- ✅ IMPORTANT FOR MONETAG -->
+<section class="about">
+  <h2>About</h2>
+  <p>
+    1Kirrk is an emerging artist turning real-life pressure into sound.
+    Hood Blues reflects raw emotion, struggle, and survival through music.
+  </p>
+</section>
+
 <footer>
   © 1Kirrk — HOOD BLUES
 </footer>
-
-<div class="sticky">
-  <a href="https://open.spotify.com/album/4PJfvvXo03JwCot9CG3yBu?si=-GFH-SLuRYexkA8YQWrfNQ" target="_blank">
-    STREAM NOW 🔥
-  </a>
-</div>
-
-<script>
-let audio = document.getElementById("audio");
-
-function toggleAudio() {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-}
-</script>
 
 </body>
 </html>
