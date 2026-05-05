@@ -19,7 +19,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ⏳ LOADING SCREEN */
+/* ⏳ LOADER */
 #loader {
   position: fixed;
   width: 100%;
@@ -28,9 +28,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
   font-size: 2em;
-  letter-spacing: 3px;
+  z-index: 999;
 }
 
 /* 🌑 BACKGROUND */
@@ -60,13 +59,9 @@ body {
   to { transform: translate(-50%, -50%); }
 }
 
-/* FADE IN */
-.fade {
-  opacity: 0;
-  animation: fadeIn 2s ease forwards;
-}
-@keyframes fadeIn {
-  to { opacity: 1; }
+/* HEADER */
+header {
+  padding: 60px 20px 20px;
 }
 
 /* GLOW */
@@ -84,10 +79,10 @@ body {
   box-shadow: 0 0 40px #6a00ff;
 }
 
-/* BUTTONS */
+/* LINKS */
 .buttons a {
   display: block;
-  margin: 12px auto;
+  margin: 10px auto;
   padding: 14px;
   width: 85%;
   max-width: 320px;
@@ -101,16 +96,14 @@ body {
   transform: scale(1.05);
 }
 
-/* TRACKLIST */
-.tracklist li {
-  list-style: none;
-  margin: 6px 0;
-  cursor: pointer;
-  text-shadow: 0 0 10px #6a00ff;
-}
-.tracklist li:hover {
-  color: #fff;
-  text-shadow: 0 0 20px #b89cff;
+/* TYPEWRITER */
+#typewriter {
+  max-width: 500px;
+  margin: auto;
+  color: #aaa;
+  border-right: 2px solid #6a00ff;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /* SPOTIFY */
@@ -130,89 +123,80 @@ footer {
 
 <body>
 
-<!-- ⏳ LOADER -->
+<!-- LOADER -->
 <div id="loader">HOOD BLUES</div>
 
 <div class="bg"></div>
 <div class="fog"></div>
 <div class="fog2"></div>
 
-<header class="fade">
-  <h1>1Kirrk</h1>
+<header>
+  <h1 class="glow">1Kirrk</h1>
   <p class="glow">HOOD BLUES — OUT NOW</p>
 </header>
 
-<section class="cover fade">
+<section class="cover">
   <img src="cover.jpg">
 </section>
 
-<div class="spotify fade">
+<!-- SPOTIFY -->
+<div class="spotify">
   <iframe style="border-radius:12px"
     src="https://open.spotify.com/embed/album/4PJfvvXo03JwCot9CG3yBu"
     width="100%" height="152"
     frameborder="0"
-    allow="autoplay; encrypted-media">
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
   </iframe>
 </div>
 
-<section class="buttons fade">
-  <a href="https://open.spotify.com/album/4PJfvvXo03JwCot9CG3yBu" target="_blank">Spotify</a>
-  <a href="https://music.apple.com/ke/album/hood-blues-ep/1895704865" target="_blank">Apple Music</a>
-  <a href="https://youtube.com/playlist?list=OLAK5uy_nfO2vh5BxzlZE997_VtRH3944a7TYDExk" target="_blank">YouTube</a>
-  <a href="https://www.instagram.com/kirrk" target="_blank">Instagram</a>
+<!-- TYPEWRITER ABOUT -->
+<section>
+  <h2 class="glow">About</h2>
+  <p id="typewriter"></p>
 </section>
 
-<section class="tracklist fade">
-  <h2 class="glow">TRACKLIST</h2>
-  <ul>
-    <li onclick="flash()">Lyrical Blues</li>
-    <li onclick="flash()">Hocus Pocus</li>
-    <li onclick="flash()">No Hook</li>
-    <li onclick="flash()">Glide</li>
-  </ul>
+<!-- STREAM LINKS -->
+<section class="buttons">
+
+  <a href="https://open.spotify.com/album/4PJfvvXo03JwCot9CG3yBu" target="_blank">🎧 Spotify</a>
+
+  <a href="https://music.apple.com/ke/album/hood-blues-ep/1895704865" target="_blank">🍎 Apple Music</a>
+
+  <a href="https://youtube.com/playlist?list=OLAK5uy_nfO2vh5BxzlZE997_VtRH3944a7TYDExk" target="_blank">▶ YouTube</a>
+
+  <a href="https://www.instagram.com/kirrk" target="_blank">📱 Instagram</a>
+
+  <a href="https://music.amazon.com/albums/B0GYRMR9G7?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_sG1r4pn6XTLjmrfhv9MmPVkdn" target="_blank">🟠 Amazon Music</a>
+
+  <a href="https://link.deezer.com/s/33bkqiymJB4vMbUE1losQ" target="_blank">🎵 Deezer</a>
+
+  <a href="https://tidal.com/album/519727193/u" target="_blank">🌊 Tidal</a>
+
 </section>
 
-<footer class="fade">
+<footer>
   © 1Kirrk — HOOD BLUES
 </footer>
 
-<!-- 🔊 HOVER SOUND -->
-<audio id="hoverSound" src="hover.mp3" preload="auto"></audio>
-
-<!-- 🎵 AMBIENT SOUND (OPTIONAL) -->
-<audio id="bgSound" src="ambient.mp3" loop></audio>
-
+<!-- TYPEWRITER SCRIPT -->
 <script>
-/* LOADER */
-window.onload = () => {
-  setTimeout(() => {
-    document.getElementById("loader").style.display = "none";
-  }, 1500);
-};
+const text = "1Kirrk is an emerging artist turning pressure into sound. Hood Blues captures a raw vibe and survival through verses.";
+let i = 0;
 
-/* HOVER SOUND */
-const buttons = document.querySelectorAll(".buttons a");
-const sound = document.getElementById("hoverSound");
-
-buttons.forEach(btn => {
-  btn.addEventListener("mouseenter", () => {
-    sound.currentTime = 0;
-    sound.play();
-  });
-});
-
-/* TRACK CLICK EFFECT */
-function flash() {
-  document.body.style.background = "#111";
-  setTimeout(() => {
-    document.body.style.background = "black";
-  }, 100);
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("typewriter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 45);
+  }
 }
 
-/* AMBIENT SOUND (starts after interaction) */
-document.body.addEventListener("click", () => {
-  document.getElementById("bgSound").play();
-}, { once: true });
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("loader").style.display = "none";
+    typeWriter();
+  }, 1500);
+});
 </script>
 
 </body>
