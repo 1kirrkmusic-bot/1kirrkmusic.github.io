@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="monetag" content="5e768b1be65802df291787894e323fbe">
-<meta name="description" content="1Kirrk official page. Stream Hood Blues EP.">
+<meta name="description" content="1Kirrk — HOOD BLUES EP. Official release. Stream now on all platforms.">
 
 <title>1Kirrk — HOOD BLUES</title>
 
@@ -15,188 +15,195 @@ body {
   font-family: Arial, sans-serif;
   background: black;
   color: white;
-  text-align: center;
   overflow-x: hidden;
 }
 
-/* ⏳ LOADER */
-#loader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2em;
-  z-index: 999;
-}
-
-/* 🌑 BACKGROUND */
+/* HERO BACKGROUND */
 .bg {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: url('cover.jpg') center/cover no-repeat;
-  filter: blur(25px) brightness(0.2);
+  background: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+  filter: brightness(0.18) contrast(1.25) saturate(0.9);
   z-index: -3;
+  animation: slowZoom 30s ease-in-out infinite alternate;
 }
 
-/* 🌫️ FOG */
-.fog, .fog2 {
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* SUBTLE FOG */
+.fog {
   position: fixed;
   width: 200%;
   height: 200%;
   background: url('https://i.imgur.com/8IuucQZ.png') repeat;
   opacity: 0.12;
+  mix-blend-mode: screen;
+  animation: drift 80s linear infinite;
   z-index: -2;
 }
-.fog { animation: moveFog 60s linear infinite; }
-.fog2 { animation: moveFog 90s linear infinite reverse; }
 
-@keyframes moveFog {
+@keyframes drift {
   from { transform: translate(0,0); }
   to { transform: translate(-50%, -50%); }
 }
 
-/* HEADER */
-header {
-  padding: 60px 20px 20px;
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px 20px;
 }
 
-/* GLOW */
+h1 {
+  font-size: 3.2em;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
 .glow {
-  color: #b89cff;
-  text-shadow: 0 0 5px #6a00ff, 0 0 15px #6a00ff;
+  color: #c2a6ff;
+  text-shadow: 0 0 8px #6a00ff, 0 0 20px #6a00ff;
 }
 
 /* COVER */
 .cover img {
   width: 90%;
-  max-width: 320px;
-  border-radius: 12px;
-  margin: 20px 0;
-  box-shadow: 0 0 40px #6a00ff;
-}
-
-/* LINKS */
-.buttons a {
-  display: block;
-  margin: 10px auto;
-  padding: 14px;
-  width: 85%;
-  max-width: 320px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: white;
-  background: linear-gradient(45deg, #111, #6a00ff);
-  transition: 0.3s;
-}
-.buttons a:hover {
-  transform: scale(1.05);
+  max-width: 340px;
+  margin: 25px auto;
+  border-radius: 14px;
+  box-shadow: 0 0 45px rgba(106,0,255,0.5);
 }
 
 /* TYPEWRITER */
 #typewriter {
-  max-width: 500px;
-  margin: auto;
-  color: #aaa;
+  max-width: 600px;
+  margin: 10px auto 30px;
+  color: #bbb;
   border-right: 2px solid #6a00ff;
   white-space: nowrap;
   overflow: hidden;
+  font-size: 0.95em;
 }
 
-/* SPOTIFY */
+/* STREAM BLOCK */
+.stream {
+  max-width: 700px;
+  margin: auto;
+  padding: 10px 20px;
+  text-align: center;
+}
+
 .spotify {
+  margin: 20px auto;
+  max-width: 420px;
+}
+
+/* LINKS GRID (LABEL STYLE) */
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  max-width: 700px;
   margin: 30px auto;
-  width: 90%;
-  max-width: 400px;
+  padding: 0 20px;
+}
+
+.links a {
+  display: block;
+  padding: 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background: rgba(20,20,20,0.8);
+  border: 1px solid rgba(106,0,255,0.3);
+  transition: 0.3s;
+}
+
+.links a:hover {
+  transform: translateY(-3px);
+  border-color: #6a00ff;
+  box-shadow: 0 0 15px rgba(106,0,255,0.4);
 }
 
 /* FOOTER */
 footer {
+  text-align: center;
   margin: 60px 0;
   color: #555;
+  font-size: 0.8em;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">HOOD BLUES</div>
-
 <div class="bg"></div>
 <div class="fog"></div>
-<div class="fog2"></div>
 
-<header>
+<!-- HERO -->
+<div class="hero">
   <h1 class="glow">1Kirrk</h1>
-  <p class="glow">HOOD BLUES — OUT NOW</p>
-</header>
-
-<section class="cover">
-  <img src="cover.jpg">
-</section>
-
-<!-- SPOTIFY -->
-<div class="spotify">
-  <iframe style="border-radius:12px"
-    src="https://open.spotify.com/embed/album/4PJfvvXo03JwCot9CG3yBu"
-    width="100%" height="152"
-    frameborder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-  </iframe>
+  <p class="glow">HOOD BLUES — OFFICIAL EP</p>
 </div>
 
-<!-- TYPEWRITER ABOUT -->
-<section>
-  <h2 class="glow">About</h2>
-  <p id="typewriter"></p>
-</section>
+<!-- COVER -->
+<div class="cover">
+  <img src="cover.jpg">
+</div>
 
-<!-- STREAM LINKS -->
-<section class="buttons">
+<!-- TYPEWRITER -->
+<p id="typewriter"></p>
 
-  <a href="https://open.spotify.com/album/4PJfvvXo03JwCot9CG3yBu" target="_blank">🎧 Spotify</a>
+<!-- STREAM -->
+<div class="stream">
 
-  <a href="https://music.apple.com/ke/album/hood-blues-ep/1895704865" target="_blank">🍎 Apple Music</a>
+  <!-- SPOTIFY -->
+  <div class="spotify">
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/album/4PJfvvXo03JwCot9CG3yBu"
+      width="100%" height="152"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+  </div>
 
-  <a href="https://youtube.com/playlist?list=OLAK5uy_nfO2vh5BxzlZE997_VtRH3944a7TYDExk" target="_blank">▶ YouTube</a>
+</div>
 
-  <a href="https://www.instagram.com/kirrk" target="_blank">📱 Instagram</a>
+<!-- DSP LINKS -->
+<div class="links">
 
-  <a href="https://music.amazon.com/albums/B0GYRMR9G7?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_sG1r4pn6XTLjmrfhv9MmPVkdn" target="_blank">🟠 Amazon Music</a>
+  <a href="https://open.spotify.com/album/4PJfvvXo03JwCot9CG3yBu">Spotify</a>
+  <a href="https://music.apple.com/ke/album/hood-blues-ep/1895704865">Apple Music</a>
+  <a href="https://youtube.com/playlist?list=OLAK5uy_nfO2vh5BxzlZE997_VtRH3944a7TYDExk">YouTube</a>
+  <a href="https://www.instagram.com/kirrk">Instagram</a>
+  <a href="https://music.amazon.com/albums/B0GYRMR9G7?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_sG1r4pn6XTLjmrfhv9MmPVkdn">Amazon</a>
+  <a href="https://link.deezer.com/s/33bkqiymJB4vMbUE1losQ">Deezer</a>
+  <a href="https://tidal.com/album/519727193/u">Tidal</a>
 
-  <a href="https://link.deezer.com/s/33bkqiymJB4vMbUE1losQ" target="_blank">🎵 Deezer</a>
-
-  <a href="https://tidal.com/album/519727193/u" target="_blank">🌊 Tidal</a>
-
-</section>
+</div>
 
 <footer>
-  © 1Kirrk — HOOD BLUES
+© 1Kirrk — HOOD BLUES
 </footer>
 
-<!-- TYPEWRITER SCRIPT -->
 <script>
-const text = "1Kirrk is an emerging artist turning pressure into sound. Hood Blues captures a raw vibe and survival through verses.";
+const text = "1Kirrk presents Hood Blues — a refined expression of sound, crafted through raw vibe and delivered through verses.";
 let i = 0;
 
 function typeWriter() {
   if (i < text.length) {
     document.getElementById("typewriter").innerHTML += text.charAt(i);
     i++;
-    setTimeout(typeWriter, 45);
+    setTimeout(typeWriter, 35);
   }
 }
 
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("loader").style.display = "none";
-    typeWriter();
-  }, 1500);
-});
+window.onload = () => {
+  setTimeout(typeWriter, 1200);
+};
 </script>
 
 </body>
